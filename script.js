@@ -3,7 +3,6 @@
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // 1) بستن اینترو
   const intro = document.getElementById("signature-intro");
   function closeIntro() {
     intro.classList.add("leaving");
@@ -12,7 +11,6 @@
   document.getElementById("sig-enter").addEventListener("click", closeIntro);
   document.getElementById("sig-skip").addEventListener("click", closeIntro);
 
-  // 2) انیمیشن ستاره‌ها روی Canvas
   (function stars() {
     const canvas = document.getElementById("sig-canvas");
     if (!canvas) return;
@@ -46,7 +44,6 @@
     draw();
   })();
 
-  // 3) منوی موبایل
   const menuBtn = document.getElementById("menuBtn");
   const nav = document.getElementById("nav");
   menuBtn.addEventListener("click", () => {
@@ -60,7 +57,6 @@
     })
   );
 
-  // 4) انیمیشن ظاهر شدن روی اسکرول
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -71,7 +67,6 @@
   }, { threshold: 0.15 });
   document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 
-  // 5) مودال پروژه‌ها
   const modal = document.getElementById("modal");
   const modalTitle = document.getElementById("modal-title");
   const modalDesc = document.getElementById("modal-desc");
