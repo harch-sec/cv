@@ -56,6 +56,105 @@ footer{padding:28px 0;color:#65768d;font-size:10px;letter-spacing:.1em;text-tran
 @media(prefers-reduced-motion:reduce){#signature-intro *{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. مدیریت صفحه اینترو (Splash Screen)
+  const intro = document.getElementById('signature-intro');
+  const skipBtn = document.getElementById('sig-skip');
+  const enterBtn = document.getElementById('sig-enter');
+
+  const closeIntro = () => {
+    if(intro) {
+      intro.classList.add('leaving');
+      setTimeout(() => {
+        intro.style.display = 'none';
+      }, 1300); // مطابق با زمان انیمیشن CSS
+    }
+  };
+
+  if (skipBtn) skipBtn.addEventListener('click', closeIntro);
+  if (enterBtn) enterBtn.addEventListener('click', closeIntro);
+  
+  // مخفی کردن خودکار اینترو بعد از 10 ثانیه (برای جلوگیری از گیر کردن)
+  setTimeout(closeIntro, 10000);
+
+  // 2. مدیریت منوی موبایل
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => nav.classList.remove('open'));
+    });
+  }
+
+  // 3. مدیریت افکت اسکرول (Reveal)
+  const reveals = document.querySelectorAll('.reveal');
+  const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    const elementVisible = 100;
+    reveals.forEach((reveal) => {
+      const elementTop = reveal.getBoundingClientRect().top;
+      if (elementTop < windowHeight - elementVisible) {
+        reveal.classList.add('visible');
+      }
+    });
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // اجرای اولیه
+
+  // 4. مدیریت پنجره‌های مدال (مدال‌های پروژه‌ها)
+  const modal = document.getElementById('project-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalBody = document.getElementById('modal-body');
+  const closeModalBtn = document.querySelector('.close');
+
+  // پیدا کردن تمام دکمه‌های پروژه (کارت‌هایی که کلاس project دارند)
+  const projects = document.querySelectorAll('.project');
+  
+  projects.forEach(project => {
+    project.addEventListener('click', () => {
+      if (!modal) return;
+      
+      // استخراج عنوان از کارت پروژه
+      const title = project.querySelector('h3')?.innerText || 'Project Details';
+      modalTitle.innerText = title;
+      
+      // محتوای دموی مدال (چون در فایل اصلی محتوا نبود، اینجا یک متن نمونه گذاشتم)
+      modalBody.innerHTML = `
+        <p>Detailed architecture, threat model, and implementation strategy for <strong>${title}</strong>.</p>
+        <h3>Key Objectives</h3>
+        <ul><li>Establish secure boundaries</li><li>Mitigate identified threat vectors</li><li>Ensure compliance and resilience</li></ul>
+        <div class="diagram">
+          <div class="node">Threat Model</div><div class="arrow">→</div>
+          <div class="node">Defense in Depth</div><div class="arrow">→</div>
+          <div class="node">Monitoring</div>
+        </div>
+      `;
+      
+      modal.classList.add('open');
+    });
+  });
+
+  if (closeModalBtn && modal) {
+    closeModalBtn.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+  }
+
+  // 5. بستن مدال با دکمه Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal) {
+      modal.classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
 <body>
 
 <div id="signature-intro" role="dialog" aria-label="H.Arch cinematic brand introduction">
