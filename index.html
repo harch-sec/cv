@@ -56,6 +56,8 @@
       <a href="#work">SELECTED WORK</a>
       <a href="#method">APPROACH</a>
       <a class="contact-link" href="#contact">LET'S CONNECT ↗</a>
+      <!-- دکمه تغییر زبان به فارسی -->
+      <a href="index-fa.html" style="color: var(--blue); font-weight: bold; border: 1px solid var(--blue); padding: 7px 12px; border-radius: 4px; margin-left: 10px;">FA 🇮🇷</a>
     </nav>
   </div>
 </header>
@@ -218,7 +220,6 @@
   if (!canvas) return;
   const ctx = canvas.getContext("2d", { alpha: false });
   
-  // متن برند شما
   const brandText = "H.ARCH";
   const fontSize = 20;
   let columns = 0, drops = [], width = 0, height = 0, animationId = 0;
@@ -240,14 +241,12 @@
   }
 
   function draw() {
-    // ردپای محو برای حرکت
     ctx.fillStyle = "rgba(2, 6, 3, 0.08)";
     ctx.fillRect(0, 0, width, height);
     ctx.font = fontSize + "px monospace";
     ctx.textBaseline = "top";
 
     for (let i = 0; i < drops.length; i++) {
-      // پیدا کردن حرف بر اساس موقعیت عمودی
       const charIndex = Math.floor((drops[i] * fontSize) / fontSize) % brandText.length;
       const char = brandText.charAt(charIndex);
       
@@ -255,7 +254,6 @@
       const y = drops[i] * fontSize;
       
       const bright = Math.random() > 0.95;
-      // رنگ آبی متمایل به سفید برای هدر و آبی تیره‌تر برای بدنه
       ctx.fillStyle = bright ? "#ffffff" : (Math.random() > 0.8 ? "#55c8ff" : "#0a4a7a");
       ctx.shadowColor = bright ? "#ffffff" : "#55c8ff";
       ctx.shadowBlur = bright ? 10 : 4;
