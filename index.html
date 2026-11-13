@@ -10,6 +10,9 @@
 </head>
 <body>
 
+<!-- ===== Matrix background layer ===== -->
+<canvas id="matrix-bg" aria-hidden="true"></canvas>
+
 <div class="grid-bg" aria-hidden="true"></div>
 
 <!-- ===== Signature Intro ===== -->
@@ -25,7 +28,6 @@
       <div class="sig-ring r3"></div><div class="sig-ring r4"></div>
       <div class="sig-ticks"></div>
       <div class="sig-seal">
-        <!-- تصویر لوگو اینجا قرار می‌گیرد -->
         <img src="logo.png" alt="H.Arch Logo">
       </div>
     </div>
@@ -44,7 +46,6 @@
 <header class="topbar">
   <div class="wrap" style="display:flex;align-items:center;justify-content:space-between">
     <a class="brand" href="#home" aria-label="H.Arch home">
-      <!-- تصویر لوگو در هدر -->
       <img src="logo.png" alt="H.Arch Logo">
       <span>H.Arch<small>SECURITY ARCHITECTURE</small></span>
     </a>
@@ -79,7 +80,6 @@
     <div class="visual reveal">
       <div class="orb"></div>
       <div class="portrait-frame">
-        <!-- عکس پرتره اینجا قرار می‌گیرد -->
         <img class="portrait" src="portrait.jpg" alt="Hamed - Cyber Security Engineer">
         <div class="scan" aria-hidden="true"></div>
       </div>
@@ -210,5 +210,62 @@
 </div>
 
 <script src="script.js"></script>
+
+<!-- ===== Matrix background script ===== -->
+<script>
+(() => {
+  const canvas = document.getElementById("matrix-bg");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d", { alpha: false });
+  const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&";
+  const fontSize = 16;
+  let columns = 0, drops = [], width = 0, height = 0, animationId = 0;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    columns = Math.ceil(width / fontSize);
+    drops = Array.from({ length: columns }, () => Math.random() * (height / fontSize));
+    ctx.fillStyle = "#020603";
+    ctx.fillRect(0, 0, width, height);
+  }
+
+  function draw() {
+    ctx.fillStyle = "rgba(2, 6, 3, 0.075)";
+    ctx.fillRect(0, 0, width, height);
+    ctx.font = fontSize + "px monospace";
+    ctx.textBaseline = "top";
+    for (let i = 0; i < drops.length; i++) {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
+      const bright = Math.random() > 0.975;
+      ctx.fillStyle = bright ? "#d7ffe0" : (Math.random() > 0.82 ? "#35ff70" : "#00a832");
+      ctx.shadowColor = bright ? "#7dff9e" : "#00ff4c";
+      ctx.shadowBlur = bright ? 12 : 4;
+      ctx.fillText(char, x, y);
+      ctx.shadowBlur = 0;
+      if (y > height && Math.random() > 0.975) drops[i] = 0;
+      else drops[i] += reduceMotion ? 0.12 : 0.48 + Math.random() * 0.42;
+    }
+    animationId = requestAnimationFrame(draw);
+  }
+
+  resize();
+  if (!reduceMotion) draw();
+  window.addEventListener("resize", () => {
+    cancelAnimationFrame(animationId);
+    resize();
+    if (!reduceMotion) draw();
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>
