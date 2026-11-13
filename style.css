@@ -81,3 +81,41 @@ footer{padding:28px 0;color:#65768d;font-size:10px;letter-spacing:.1em;text-tran
 .parallax-element {
   will-change: transform;
 }
+/* ===== Final Fixes: Mobile Menu, Parallax, and Modals ===== */
+
+/* ۱. اصلاح دکمه زبان در منوی موبایل */
+@media (max-width: 850px) {
+  .nav a[href="index-fa.html"],
+  .nav a[href="index.html"] {
+    display: block !important;
+    text-align: center;
+    margin: 10px 0 0 0 !important;
+    padding: 12px !important;
+    border: 1px solid var(--blue) !important;
+    background: rgba(85, 200, 255, 0.1);
+    border-radius: 4px;
+  }
+}
+
+/* ۲. اصلاح مودال‌ها (Project Modal) */
+.modal-card {
+  background: #0a1324 !important;
+  border: 1px solid var(--blue) !important;
+  box-shadow: 0 0 50px rgba(85, 200, 255, 0.2) !important;
+}
+.modal-card p {
+  color: #b8c7d9 !important;
+}
+.modal-card h3 {
+  border-bottom: 1px solid rgba(85, 200, 255, 0.2);
+  padding-bottom: 10px;
+}
+
+/* ۳. استایل‌های Parallax */
+.visual {
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+.orb {
+  will-change: transform;
+}
