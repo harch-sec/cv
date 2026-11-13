@@ -211,14 +211,16 @@
 
 <script src="script.js"></script>
 
-<!-- ===== Matrix background script ===== -->
+<!-- ===== Matrix background script (H.ARCH Brand) ===== -->
 <script>
 (() => {
   const canvas = document.getElementById("matrix-bg");
   if (!canvas) return;
   const ctx = canvas.getContext("2d", { alpha: false });
-  const chars = "H.ARCH H.ARCH H.ARCH H.ARCH H.ARCH.0123456789";
-  const fontSize = 16;
+  
+  // متن برند شما
+  const brandText = "H.ARCH";
+  const fontSize = 20;
   let columns = 0, drops = [], width = 0, height = 0, animationId = 0;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -231,29 +233,38 @@
     canvas.style.width = width + "px";
     canvas.style.height = height + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    columns = Math.ceil(width / fontSize);
+    columns = Math.ceil(width / (fontSize * 1.5));
     drops = Array.from({ length: columns }, () => Math.random() * (height / fontSize));
     ctx.fillStyle = "#020603";
     ctx.fillRect(0, 0, width, height);
   }
 
   function draw() {
-    ctx.fillStyle = "rgba(2, 6, 3, 0.075)";
+    // ردپای محو برای حرکت
+    ctx.fillStyle = "rgba(2, 6, 3, 0.08)";
     ctx.fillRect(0, 0, width, height);
     ctx.font = fontSize + "px monospace";
     ctx.textBaseline = "top";
+
     for (let i = 0; i < drops.length; i++) {
-      const char = chars[Math.floor(Math.random() * chars.length)];
-      const x = i * fontSize;
+      // پیدا کردن حرف بر اساس موقعیت عمودی
+      const charIndex = Math.floor((drops[i] * fontSize) / fontSize) % brandText.length;
+      const char = brandText.charAt(charIndex);
+      
+      const x = i * fontSize * 1.5;
       const y = drops[i] * fontSize;
-      const bright = Math.random() > 0.975;
-      ctx.fillStyle = bright ? "#d7ffe0" : (Math.random() > 0.82 ? "#35ff70" : "#00a832");
-      ctx.shadowColor = bright ? "#7dff9e" : "#00ff4c";
-      ctx.shadowBlur = bright ? 12 : 4;
+      
+      const bright = Math.random() > 0.95;
+      // رنگ آبی متمایل به سفید برای هدر و آبی تیره‌تر برای بدنه
+      ctx.fillStyle = bright ? "#ffffff" : (Math.random() > 0.8 ? "#55c8ff" : "#0a4a7a");
+      ctx.shadowColor = bright ? "#ffffff" : "#55c8ff";
+      ctx.shadowBlur = bright ? 10 : 4;
+      
       ctx.fillText(char, x, y);
       ctx.shadowBlur = 0;
-      if (y > height && Math.random() > 0.975) drops[i] = 0;
-      else drops[i] += reduceMotion ? 0.12 : 0.48 + Math.random() * 0.42;
+      
+      if (y > height && Math.random() > 0.97) drops[i] = 0;
+      else drops[i] += reduceMotion ? 0.1 : 0.3 + Math.random() * 0.3;
     }
     animationId = requestAnimationFrame(draw);
   }
