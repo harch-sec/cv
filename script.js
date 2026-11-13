@@ -94,3 +94,14 @@
     if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
   });
 })();
+// ===== Content Protection =====
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert("© 2026 H.Arch. All Rights Reserved.\n\nIntellectual property protected. Unauthorized copying or reproduction of this website's design and code is strictly prohibited and subject to legal action.");
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U') || e.key === 'F12') {
+        e.preventDefault();
+    }
+});
