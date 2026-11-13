@@ -120,3 +120,25 @@ document.addEventListener('keydown', function(e) {
     localStorage.setItem('harch-lang', 'en');
   }
 })();
+// ===== Parallax Scroll Effect =====
+(function() {
+  // فقط در دسکتاپ اجرا بشه (موبایل معمولاً پردازش سنگین داره)
+  if (window.innerWidth > 850) {
+    const visual = document.querySelector('.visual');
+    const orb = document.querySelector('.orb');
+
+    window.addEventListener('scroll', function() {
+      const scrollY = window.scrollY;
+      
+      // عکس پرتره با سرعت کمتری نسبت به اسکرول حرکت می‌کنه (به پایین می‌ره)
+      if (visual) {
+        visual.style.transform = `translateY(${scrollY * 0.15}px)`;
+      }
+      
+      // دایره‌ی پشت عکس با سرعت بیشتری حرکت می‌کنه (به بالا می‌ره)
+      if (orb) {
+        orb.style.transform = `translateY(${scrollY * -0.1}px)`;
+      }
+    }, { passive: true });
+  }
+})();
