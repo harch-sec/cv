@@ -105,3 +105,18 @@ document.addEventListener('keydown', function(e) {
         e.preventDefault();
     }
 });
+// ===== Auto Language Redirect =====
+(function() {
+  // اگه کاربر تو صفحه‌ی انگلیسیه و قبلاً فارسی انتخاب کرده بود، ببرش فارسی
+  if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
+    if (localStorage.getItem('harch-lang') === 'fa') {
+      window.location.href = 'index-fa.html';
+    }
+  }
+  // اگه کاربر تو صفحه‌ی فارسیه، ذخیره کن که فارسی دوست داره
+  if (window.location.pathname.includes('index-fa.html')) {
+    localStorage.setItem('harch-lang', 'fa');
+  } else {
+    localStorage.setItem('harch-lang', 'en');
+  }
+})();
