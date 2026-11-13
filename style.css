@@ -68,3 +68,16 @@ footer{padding:28px 0;color:#65768d;font-size:10px;letter-spacing:.1em;text-tran
     background: rgba(85, 200, 255, 0.1);
   }
 }
+/* ===== Parallax Effects ===== */
+.visual {
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+.orb {
+  will-change: transform;
+}
+
+.parallax-element {
+  will-change: transform;
+}
