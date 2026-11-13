@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H.Arch — رزومه</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
+<style>
+  body { background-color: var(--bg); color: var(--white); font-family: 'Vazirmatn', Inter, sans-serif; }
+  .resume-container { max-width: 800px; margin: 40px auto; padding: 40px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+  .header { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 20px; margin-bottom: 30px; }
+  .header h1 { color: var(--blue); margin: 0 0 10px 0; font-size: 36px; letter-spacing: 0; }
+  .header p { color: var(--muted); margin: 0; font-size: 14px; }
+  .section-title { color: var(--blue); font-size: 18px; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-top: 30px; margin-bottom: 15px; }
+  .job { margin-bottom: 20px; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+  .job-title { font-weight: bold; font-size: 16px; color: var(--white); }
+  .job-company { color: var(--blue); font-size: 14px; }
+  .job-date { color: var(--muted); font-size: 12px; }
+  .job-desc { color: #b6c4d7; font-size: 14px; line-height: 1.8; margin-top: 5px; }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .skill-tag { background: var(--panel2); border: 1px solid var(--line); color: var(--blue); padding: 5px 12px; border-radius: 20px; font-size: 12px; }
+  .print-btn { display: inline-block; margin-top: 30px; padding: 10px 20px; background: var(--blue); color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; }
+  .print-btn:hover { background: var(--blue2); color: #fff; }
+  ul { padding-right: 20px; margin-top: 5px; }
+  @media print { body { background: white; color: black; } .resume-container { box-shadow: none; border: none; } .print-btn, .nav-link { display: none; } .job-desc, .job-date { color: #333; } }
+</style>
+</head>
+<body>
+
+<div class="resume-container">
+  <div class="header">
+    <h1>حامد خدایاری</h1>
+    <p>مهندس امنیت سایبری و مدیرعامل سابق</p>
+    <p>hello@harch.security | harch-sec.github.io/cv</p>
+  </div>
+
+  <div class="section-title">خلاصه حرفه‌ای</div>
+  <p class="job-desc">متخصص با سابقه در مدیریت اجرایی و علاقه‌مند به معماری امنیت سایبری. دارای تجربه اثبات‌شده در رهبری شرکت‌های تجارت الکترونیک B2B، مدیریت تیم‌ها و توسعه استراتژی‌های تجاری.</p>
+
+  <div class="section-title">سوابق کاری</div>
+  
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">بنیان‌گذار و مدیرعامل</span>
+      <span class="job-date">۱۳۹۷ – ۱۴۰۰</span>
+    </div>
+    <div class="job-company">شرکت پارسا مهر ویرا</div>
+    <div class="job-desc">
+      <ul>
+        <li>بنیان‌گذاری و رهبری یک شرکت تجارت الکترونیک B2B با نظارت بر تمام جنبه‌های استراتژی و عملیات.</li>
+        <li>مدیریت تیم‌های چندرشته‌ای، ایجاد روابط با مشتریان و مقیاس‌بندی عملیات تجاری.</li>
+        <li>توسعه مهارت‌های رهبری، مدیریت ریسک و برنامه‌ریزی استراتژیک.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">پروژه مستقل و طراحی معماری</span>
+      <span class="job-date">۱۴۰۱ – اکنون</span>
+    </div>
+    <div class="job-desc">
+      <ul>
+        <li>طراحی و توسعه یک دستیار هوشمند معماری (جزئیات پروژه محرمانه است).</li>
+        <li>تمرکز بر طراحی سیستم‌های امن، حریم خصوصی داده‌ها و اصول محرمانگی.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">مهارت‌ها</div>
+  <div class="skills-list">
+    <span class="skill-tag">معماری امنیت</span>
+    <span class="skill-tag">طراحی بدون اعتماد (Zero Trust)</span>
+    <span class="skill-tag">مدل‌سازی تهدید (STRIDE)</span>
+    <span class="skill-tag">رهبری و مدیریت</span>
+    <span class="skill-tag">برنامه‌ریزی استراتژیک</span>
+    <span class="skill-tag">مدیریت ریسک</span>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <button class="print-btn" onclick="window.print()">دانلود / چاپ PDF</button>
+  </div>
+  <div style="text-align: center; margin-top: 15px;">
+    <a href="index-fa.html" class="nav-link" style="color: var(--muted); font-size: 14px; text-decoration: none;">← بازگشت به صفحه اصلی</a>
+  </div>
+</div>
+
+</body>
+</html>
