@@ -45,3 +45,14 @@ footer{padding:28px 0;color:#65768d;font-size:10px;letter-spacing:.1em;text-tran
 @keyframes sig-failsafe{0%,86%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden;pointer-events:none}}@keyframes sig-rise{to{opacity:1;transform:translateY(0);filter:blur(0)}}@keyframes sig-seal{to{opacity:1;transform:scale(1) rotate(0)}}@keyframes sig-draw{to{transform:scaleX(1)}}@keyframes sig-orbit1{to{transform:rotateX(69deg) rotateZ(338deg)}}@keyframes sig-orbit2{to{transform:rotateY(66deg) rotateZ(388deg)}}@keyframes sig-orbit3{to{transform:rotateX(72deg) rotateZ(422deg)}}@keyframes sig-spin{to{transform:rotate(360deg)}}@keyframes sig-pulse{50%{transform:scale(1.2);opacity:.65}}@keyframes sig-atmosphere{to{transform:scale(1.12);opacity:.75}}@keyframes sig-progress{to{width:100%}}
 @media(max-width:600px){.sig-astrolabe{width:min(83vw,350px)}.sig-word{font-size:clamp(39px,11vw,62px);letter-spacing:.16em;padding-left:.16em}.sig-top,.sig-bottom{font-size:7px;letter-spacing:.1em}.sig-stage{min-height:84vh}}
 @media(prefers-reduced-motion:reduce){#signature-intro *{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}}
+
+/* ===== Matrix background layer ===== */
+#matrix-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: .35;
+}
