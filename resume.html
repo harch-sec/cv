@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H.Arch — Resume</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* استایل اختصاصی رزومه */
+  body { background-color: var(--bg); color: var(--white); font-family: Inter, sans-serif; }
+  .resume-container { max-width: 800px; margin: 40px auto; padding: 40px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+  .header { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 20px; margin-bottom: 30px; }
+  .header h1 { color: var(--blue); margin: 0 0 10px 0; font-size: 36px; letter-spacing: 1px; }
+  .header p { color: var(--muted); margin: 0; font-size: 14px; }
+  .section-title { color: var(--blue); font-size: 18px; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-top: 30px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+  .job { margin-bottom: 20px; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+  .job-title { font-weight: bold; font-size: 16px; color: var(--white); }
+  .job-company { color: var(--blue); font-size: 14px; }
+  .job-date { color: var(--muted); font-size: 12px; }
+  .job-desc { color: #b6c4d7; font-size: 14px; line-height: 1.6; margin-top: 5px; }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .skill-tag { background: var(--panel2); border: 1px solid var(--line); color: var(--blue); padding: 5px 12px; border-radius: 20px; font-size: 12px; }
+  .print-btn { display: inline-block; margin-top: 30px; padding: 10px 20px; background: var(--blue); color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; }
+  .print-btn:hover { background: var(--blue2); color: #fff; }
+  @media print { body { background: white; color: black; } .resume-container { box-shadow: none; border: none; } .print-btn, .nav-link { display: none; } .job-desc, .job-date { color: #333; } }
+</style>
+</head>
+<body>
+
+<div class="resume-container">
+  <div class="header">
+    <h1>Hamed Khodayari</h1>
+    <p>Cyber Security Engineer & Former CEO</p>
+    <p>hello@harch.security | harch-sec.github.io/cv</p>
+  </div>
+
+  <div class="section-title">Professional Summary</div>
+  <p class="job-desc">Results-driven professional with a background in executive management and a strong passion for Cyber Security and Security Architecture. Proven experience in leading e-commerce B2B enterprises, managing teams, and developing strategic business operations.</p>
+
+  <div class="section-title">Experience</div>
+  
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Founder & CEO</span>
+      <span class="job-date">2018 – 2021</span>
+    </div>
+    <div class="job-company">Parsa Mehr Vira Co.</div>
+    <div class="job-desc">
+      <ul>
+        <li>Founded and led a B2B e-commerce company, overseeing all aspects of business strategy and operations.</li>
+        <li>Managed cross-functional teams, built client relationships, and scaled business operations.</li>
+        <li>Developed strong leadership, risk management, and strategic planning skills.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Independent Project & Architecture Design</span>
+      <span class="job-date">2022 – Present</span>
+    </div>
+    <div class="job-desc">
+      <ul>
+        <li>Designed and developed an AI-driven architecture assistant (Project details confidential).</li>
+        <li>Focused on secure system design, data privacy, and confidentiality principles.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">Skills</div>
+  <div class="skills-list">
+    <span class="skill-tag">Security Architecture</span>
+    <span class="skill-tag">Zero Trust Design</span>
+    <span class="skill-tag">Threat Modeling (STRIDE)</span>
+    <span class="skill-tag">Leadership & Management</span>
+    <span class="skill-tag">Strategic Planning</span>
+    <span class="skill-tag">Risk Management</span>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <button class="print-btn" onclick="window.print()">Download / Print PDF</button>
+  </div>
+  <div style="text-align: center; margin-top: 15px;">
+    <a href="index.html" class="nav-link" style="color: var(--muted); font-size: 14px; text-decoration: none;">← Back to Home</a>
+  </div>
+</div>
+
+</body>
+</html>
